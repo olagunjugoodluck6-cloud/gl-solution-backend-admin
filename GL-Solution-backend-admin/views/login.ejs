@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GL Solution Admin Login</title><link rel="stylesheet" href="/style.css"></head>
+<body class="login">
+  <div class="login-box">
+    <div class="logo"><span class="logo-mark">GL</span><div><strong>Solution Admin</strong><small>Secure dashboard</small></div></div>
+    <h1 style="margin-top:25px">Administrator Login</h1>
+    <p class="muted">Sign in to publish and manage your website content.</p>
+    <% if (error) { %><div class="error"><%= error %></div><% } %>
+    <form class="form" method="post" action="/admin/login">
+      <input name="username" autocomplete="username" placeholder="Username" required>
+      <input name="password" type="password" autocomplete="current-password" placeholder="Password" required>
+      <button class="btn" type="submit">Sign In</button>
+    </form>
+    <a class="muted" href="/">← Back to website</a>
+  </div>
+</body>
+</html>

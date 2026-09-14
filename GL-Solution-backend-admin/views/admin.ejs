@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GL Solution Admin</title><link rel="stylesheet" href="/style.css"></head>
+<body class="admin-wrap">
+  <div class="container">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap">
+        <div><div class="logo"><span class="logo-mark">GL</span><div><strong>Solution Admin</strong><small>Administrator dashboard</small></div></div><p class="muted" style="margin-top:10px">Signed in as <%= username %></p></div>
+       <div>
+  <a class="btn outline" href="/">View Website</a>
+
+  <a class="btn outline" href="/admin/change-password">
+    Change Password
+  </a>
+
+  <form method="post" action="/admin/logout" style="display:inline">
+    <button class="danger" type="submit">Log Out</button>
+  </form>
+</div>
+      </div>
+
+      <hr style="border:0;border-top:1px solid #252837;margin:25px 0">
+
+      <h2>Publish a new post / portfolio item</h2>
+      <p class="muted">Upload a JPG, PNG or WebP image (maximum 5 MB).</p>
+      <form class="form" method="post" action="/admin/posts" enctype="multipart/form-data">
+        <input name="title" maxlength="120" placeholder="Project or post title" required>
+        <textarea name="body" maxlength="5000" placeholder="Short description..." required></textarea>
+        <input name="image" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
+        <button class="btn" type="submit">Publish</button>
+      </form>
+
+      <h2 style="margin-top:30px">Published content</h2>
+      <% if (posts.length === 0) { %><p class="muted">No posts yet.</p><% } %>
+      <% posts.forEach(post => { %>
+        <div class="post-row" style="display:block">
+          <form class="form" method="post" action="/admin/posts/<%= post.id %>/edit" enctype="multipart/form-data">
+            <input name="title" maxlength="120" value="<%= post.title %>" required>
+            <textarea name="body" maxlength="5000" required><%= post.body %></textarea>
+            <% if (post.image) { %>
+              <div style="margin:8px 0 12px">
+                <img src="<%= post.image %>" alt="<%= post.title %>" style="max-width:180px;height:auto;border-radius:10px">
+              </div>
+            <% } %>
+            <label class="muted">Replace image (optional)</label>
+            <input name="image" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn" type="submit">Save Changes</button>
+              <button class="danger" type="submit" formaction="/admin/posts/<%= post.id %>/delete" formmethod="post" onclick="return confirm('Delete this post?')">Delete</button>
+            </div>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+</html>

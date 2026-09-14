@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GL Solution | Graphics Design</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a class="logo" href="#home"><span class="logo-mark">GL</span><div><strong>Solution</strong><small>Graphics Design • Creativity • Impact</small></div></a>
+    <nav class="nav-links">
+      <a href="#home">Home</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="#contact">Hire Me ↗</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge">✦ Welcome to GL Solution</div>
+      <h1>Creative Designs That Make Your <span>Brand Stand Out.</span></h1>
+      <p>Professional and creative graphic design solutions for businesses, brands and individuals. From logos and flyers to social media and UI/UX design.</p>
+      <div class="buttons"><a class="btn" href="#portfolio">View Portfolio →</a><a class="btn outline" href="#contact">Hire Me ↗</a></div>
+    </div>
+    <div class="visual"><div class="mockup"><div class="gl">GL</div></div></div>
+  </div>
+</section>
+
+<section class="section dark" id="services">
+  <div class="container">
+    <div class="heading"><span class="label">MY SERVICES</span><h2>What I Offer</h2><p>Creative solutions designed to make your brand look professional.</p></div>
+    <div class="grid">
+      <article class="card"><div class="icon">✒</div><h3>Logo Design</h3><p>Unique and professional logos that represent your brand.</p></article>
+      <article class="card"><div class="icon">▤</div><h3>Flyer Design</h3><p>Attractive flyers for businesses, events and promotions.</p></article>
+      <article class="card"><div class="icon">◎</div><h3>Social Media Design</h3><p>Eye-catching graphics for social media platforms.</p></article>
+      <article class="card"><div class="icon">▣</div><h3>UI/UX Design</h3><p>Modern, user-friendly interfaces for better digital experiences.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="portfolio">
+  <div class="container">
+    <div class="heading"><span class="label">MY PORTFOLIO</span><h2>Recent Projects</h2><p>New work published through the GL Solution admin dashboard appears here automatically.</p></div>
+    <div class="portfolio">
+      <% if (posts.length === 0) { %>
+        <div class="work"><div class="placeholder">GL</div><div class="work-info"><strong>Your first project</strong><span>Publish it from Admin</span></div></div>
+      <% } %>
+      <% posts.forEach(post => { %>
+        <article class="work">
+          <% if (post.image) { %><img src="<%= post.image %>" alt="<%= post.title %>"><% } else { %><div class="placeholder">GL</div><% } %>
+          <div class="work-info"><strong><%= post.title %></strong><span><%= post.body %></span></div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="about">
+  <div class="container about">
+    <div class="about-box"><strong>GL</strong></div>
+    <div>
+      <span class="label">ABOUT GL SOLUTION</span>
+      <h2>Turning Ideas Into <span>Visual Stories</span></h2>
+      <p>GL Solution is a creative graphics design brand focused on clean, modern and professional visual designs.</p>
+      <p>I help businesses and individuals communicate their ideas through powerful visuals that attract attention and create impact.</p>
+      <a class="btn" href="#contact">Let's Work Together →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact">
+      <div><h2>Let's Work Together</h2><p>Have a project in mind? Get in touch with GL Solution.</p>
+        <div class="contact-info">
+          <a href="mailto:<%= contact.email %>">✉ <%= contact.email %></a>
+          <a href="tel:<%= contact.phone %>">☎ <%= contact.phone %></a>
+          <a href="https://wa.me/<%= contact.whatsapp %>" target="_blank" rel="noopener">WhatsApp ↗</a>
+        </div>
+      </div>
+      <a class="btn" href="https://wa.me/<%= contact.whatsapp %>" target="_blank" rel="noopener">Message on WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">© <%= new Date().getFullYear() %> GL Solution. All Rights Reserved.</footer>
+</body>
+</html>
